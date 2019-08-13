@@ -9,6 +9,7 @@ router.post("/", async (req, res) => {
         res.status(400).json({
             errorMessage: "Please provide title and contents for the post."
         })
+        return;
     }
 
     try {
