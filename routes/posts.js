@@ -81,7 +81,21 @@ router.post("/:id/comments", async (req,res) => {
     }
 })
 
-router.get("/", (req, res) => {
+router.get("/", (_req, res) => {
+    try {
+        const posts = await db.find();
+
+        res.status(200).json({
+            posts
+        })
+    } catch (error) {
+        console.error(error.message);
+
+        res.status(500).json({
+            error: "The posts information could not be retrieved."
+        })
+    }
+
     res.send("Hi");
 })
 
